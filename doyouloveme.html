@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Question 💗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      /* ===== RESET ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+      }
+
+      /* ===== ANIMATED GRADIENT BACKGROUND ===== */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: -50%;
+        background: radial-gradient(circle at 20% 30%, #ff4d6d, transparent 40%),
+          radial-gradient(circle at 80% 20%, #ff9de2, transparent 45%),
+          radial-gradient(circle at 50% 80%, #4ade80, transparent 45%);
+        animation: floatBG 18s ease-in-out infinite alternate;
+        z-index: -1;
+      }
+
+      @keyframes floatBG {
+        from {
+          transform: translateY(0) scale(1);
+        }
+        to {
+          transform: translateY(-60px) scale(1.05);
+        }
+      }
+
+      /* ===== CARD ===== */
+      .card {
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(16px);
+        border-radius: 28px;
+        padding: 50px 40px;
+        width: min(90%, 360px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        font-size: 1.9rem;
+        margin-bottom: 32px;
+      }
+
+      /* ===== BUTTONS ===== */
+      .buttons {
+        display: flex;
+        gap: 18px;
+        justify-content: center;
+        position: relative;
+      }
+
+      button {
+        border: none;
+        padding: 14px 28px;
+        border-radius: 999px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      #yesBtn {
+        background: linear-gradient(135deg, #ff4d6d, #ff9de2);
+        color: #300014;
+        box-shadow: 0 12px 30px rgba(255, 77, 109, 0.5);
+      }
+
+      #yesBtn:hover {
+        transform: scale(1.05);
+      }
+
+      #noBtn {
+        background: linear-gradient(135deg, #4ade80, #22c55e);
+        color: #022c22;
+        position: absolute;
+      }
+
+      /* ===== RESULT ===== */
+      .result {
+        margin-top: 24px;
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .result.show {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h1>Do you still love me? 💕</h1>
+
+      <div class="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No 🙃</button>
+      </div>
+
+      <div id="result" class="result">I knew it 😘💞</div>
+    </div>
+
+    <script>
+      const noBtn = document.getElementById("noBtn");
+      const yesBtn = document.getElementById("yesBtn");
+      const result = document.getElementById("result");
+
+      // Initial position for NO button
+      moveNoButton();
+
+      function moveNoButton() {
+        const card = document.querySelector(".card");
+        const rect = card.getBoundingClientRect();
+
+        const maxX = rect.width - noBtn.offsetWidth;
+        const maxY = rect.height - noBtn.offsetHeight;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+      }
+
+      // Run away on hover (desktop)
+      noBtn.addEventListener("mouseenter", moveNoButton);
+
+      // Run away on touch (mobile)
+      noBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        moveNoButton();
+      });
+
+      // YES click
+      yesBtn.addEventListener("click", () => {
+        result.classList.add("show");
+        yesBtn.textContent = "💖💖💖";
+      });
+    </script>
+  </body>
+</html>

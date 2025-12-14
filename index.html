@@ -1,134 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Have a wonderful day</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Question 💗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      font-family: system-ui, -apple-system, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(120deg, #ffd1dc, #cce7ff, #fff1b8);
-      background-size: 400% 400%;
-      animation: bgMove 16s ease infinite;
-    }
+  <body>
+    <div class="card">
+      <h1>Do you still love me? 💕</h1>
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+      <div class="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No 😭💔</button>
+      </div>
 
-    .card {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 28px;
-      padding: 36px 44px;
-      max-width: 520px;
-      text-align: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-    }
+      <div id="result" class="result">💖 I knew it 💖</div>
 
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      color: #333;
-    }
-
-    .line {
-      font-size: 1.05rem;
-      margin: 10px 0;
-      color: #444;
-    }
-
-    .ua {
-      font-weight: 700;
-      color: #0057b7;
-    }
-
-    .highlight {
-      color: #ff5fa2;
-      font-weight: 700;
-    }
-
-    .cats {
-      margin-top: 18px;
-      font-size: 1.8rem;
-      animation: bounce 1.2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0); }
-    }
-
-    /* Floating flowers */
-    .flower {
-      position: absolute;
-      bottom: -40px;
-      font-size: 20px;
-      animation: floatUp linear infinite;
-      opacity: 0.9;
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-120vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="card">
-    <h1>🌸 Have a wonderful day 🌸</h1>
-
-    <div class="line ua">
-      Гарного тобі дня сьогодні, <span class="highlight">моя солодка булочка</span> 💛
+      <img
+        id="loveImage"
+        src="assets/closing.jpeg"
+        alt="Love"
+        class="love-image"
+      />
     </div>
 
-    <div class="line">
-      Have a wonderful day today, <span class="highlight">my sweet bun</span> 💗
-    </div>
-
-    <div class="line">
-      Semoga harimu menyenangkan hari ini, <span class="highlight">roti manisku</span> 💖
-    </div>
-
-    <div class="cats">
-      🐱😺🐱
-    </div>
-  </div>
-
-  <script>
-    const flowers = ['🌸', '🌼', '🌷', '💐', '🌺']
-
-    function createFlower() {
-      const flower = document.createElement('div')
-      flower.className = 'flower'
-      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)]
-      flower.style.left = Math.random() * 100 + 'vw'
-      flower.style.animationDuration = 6 + Math.random() * 6 + 's'
-      flower.style.fontSize = 16 + Math.random() * 24 + 'px'
-      document.body.appendChild(flower)
-
-      setTimeout(() => flower.remove(), 12000)
-    }
-
-    setInterval(createFlower, 300)
-  </script>
-</body>
+    <script src="assets/main.js"></script>
+  </body>
 </html>
